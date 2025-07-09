@@ -1,0 +1,885 @@
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reducción de Jornada Laboral - Reforma 2025</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, #4A90E2 0%, #FF6B35 100%);
+                color: #333;
+                line-height: 1.6;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            .header {
+                background: white;
+                border-radius: 20px;
+                padding: 40px;
+                margin-bottom: 30px;
+                box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+                text-align: center;
+            }
+
+            .highlight-box {
+                background: linear-gradient(45deg, #4A90E2, #FF6B35);
+                padding: 20px;
+                border-radius: 15px;
+                color: white;
+                font-weight: bold;
+                font-size: 1.1rem;
+                margin: 20px 0;
+                text-align: center;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            }
+
+            .section {
+                background: white;
+                border-radius: 20px;
+                padding: 30px;
+                margin-bottom: 30px;
+                box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            }
+
+            .section h2 {
+                color: #2c3e50;
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 3px solid #4A90E2;
+            }
+
+            .section h3 {
+                color: #34495e;
+                font-size: 1.3rem;
+                margin: 20px 0 15px 0;
+                padding-left: 15px;
+                border-left: 4px solid #4A90E2;
+            }
+
+            .stats-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 25px;
+                margin: 25px 0;
+            }
+
+            .stat-card {
+                background: linear-gradient(135deg, #4A90E2 0%, #FF6B35 100%);
+                color: white;
+                padding: 25px;
+                border-radius: 15px;
+                text-align: center;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                transform: translateY(0);
+                transition: transform 0.3s ease;
+            }
+
+            .stat-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .stat-label {
+                font-size: 1.1rem;
+                opacity: 0.9;
+            }
+
+            .schedule-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 20px;
+                margin: 25px 0;
+            }
+
+            .schedule-option {
+                background: #f8f9fa;
+                border: 2px solid #e9ecef;
+                border-radius: 15px;
+                padding: 25px;
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+
+            .schedule-option:hover {
+                border-color: #4A90E2;
+                background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(255, 107, 53, 0.1));
+                transform: translateY(-3px);
+                box-shadow: 0 10px 25px rgba(74, 144, 226, 0.2);
+            }
+
+            .schedule-title {
+                font-size: 1.3rem;
+                font-weight: bold;
+                color: #2c3e50;
+                margin-bottom: 15px;
+            }
+
+            .schedule-time {
+                font-size: 1.1rem;
+                color: #7f8c8d;
+                margin-bottom: 8px;
+            }
+
+            .schedule-total {
+                background: linear-gradient(45deg, #4A90E2, #FF6B35);
+                color: white;
+                padding: 10px;
+                border-radius: 8px;
+                font-weight: bold;
+                margin-top: 15px;
+            }
+
+            .area-detail {
+                background: #f8f9fa;
+                border-radius: 10px;
+                padding: 20px;
+                margin-bottom: 20px;
+                border-left: 5px solid #4A90E2;
+            }
+
+            .area-title {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #2c3e50;
+                margin-bottom: 15px;
+                padding: 10px;
+                background: linear-gradient(90deg, rgba(74, 144, 226, 0.1), rgba(255, 107, 53, 0.1));
+                border-radius: 8px;
+                border-left: 4px solid #4A90E2;
+            }
+
+            .cargo-list {
+                margin-left: 20px;
+            }
+
+            .cargo-item {
+                background: white;
+                padding: 10px 15px;
+                margin-bottom: 8px;
+                border-radius: 8px;
+                border-left: 3px solid #4A90E2;
+                font-size: 0.95rem;
+                transition: all 0.3s ease;
+            }
+
+            .cargo-item:hover {
+                border-left: 3px solid #FF6B35;
+                background: linear-gradient(90deg, rgba(74, 144, 226, 0.05), rgba(255, 107, 53, 0.05));
+            }
+
+            .cargo-item .cargo-name {
+                font-weight: bold;
+                color: #2c3e50;
+            }
+
+            .cargo-item .cargo-hours {
+                color: #7f8c8d;
+                font-size: 0.9rem;
+            }
+
+            .important-note {
+                background: #fff3cd;
+                border: 1px solid #ffeaa7;
+                padding: 20px;
+                border-radius: 10px;
+                margin: 20px 0;
+                border-left: 5px solid #fdcb6e;
+            }
+
+            .important-note strong {
+                color: #e17055;
+            }
+
+            .btn-print {
+                background: linear-gradient(45deg, #4A90E2, #FF6B35);
+                color: white;
+                padding: 15px 30px;
+                border: none;
+                border-radius: 25px;
+                font-size: 1.1rem;
+                cursor: pointer;
+                margin: 20px 0;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+            }
+
+            .btn-print:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
+            }
+
+            @media print {
+                body {
+                    background: white;
+                    color: black;
+                }
+                
+                .btn-print {
+                    display: none;
+                }
+            }
+
+            .two-column {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                margin: 25px 0;
+            }
+
+            @media (max-width: 768px) {
+                .two-column {
+                    grid-template-columns: 1fr;
+                }
+                
+                .schedule-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .logo {
+                max-width: 154px;
+                margin: 0;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                    <div style="background: linear-gradient(45deg, #4A90E2, #FF6B35); padding: 50px; border-radius: 20px; margin-right: 20px;">
+                        <img src="logo.png" alt="Company Logo" class="logo">
+                    </div>
+                    <div style="text-align: left;">
+                        <h1 style="margin: 0; color: #2c3e50; font-size: 2.5rem; font-weight: 700;">🕐 Reducción de Jornada Laboral</h1>
+                        <p style="margin: 5px 0; color: #4A90E2; font-size: 1.4rem; font-weight: 600;">ONE CONTACT INTERNACIONAL S.A.S.</p>
+                        <p style="margin: 0; color: #7f8c8d; font-size: 1.2rem;">Implementación de 44 horas semanales</p>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    📅 Vigencia: 15 de julio de 2025
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📊 Resumen Ejecutivo</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">485</div>
+                        <div class="stat-label">Total Empleados</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">148</div>
+                        <div class="stat-label">Pasan a 44 horas semanales<br>(7.6 horas diarias)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">337</div>
+                        <div class="stat-label">Mantienen 36 horas semanales<br>(6 horas diarias)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>⏰ Opciones de Horarios - 44 Horas Semanales</h2>
+                <p><strong>Aplicable a:</strong> Empleados que actualmente laboran 8 horas diarias (46 horas semanales)</p>
+                <p><strong>Nueva jornada:</strong> 7.6 horas diarias de lunes a viernes + 6 horas los sábados</p>
+                
+                <div class="schedule-grid">
+                    <div class="schedule-option">
+                        <div class="schedule-title">Opción 1</div>
+                        <div class="schedule-time">🌅 Lunes a Viernes: 7:00 AM - 3:36 PM</div>
+                        <div class="schedule-time">🌅 Sábados: 7:00 AM - 1:00 PM</div>
+                        <div class="schedule-time">🍽️ Almuerzo: 12:00 PM - 1:00 PM</div>
+                        <div class="schedule-total">Total diario: 8.6 horas (incluyendo almuerzo)</div>
+                    </div>
+                    
+                    <div class="schedule-option">
+                        <div class="schedule-title">Opción 2</div>
+                        <div class="schedule-time">🌞 Lunes a Viernes: 9:00 AM - 5:36 PM</div>
+                        <div class="schedule-time">🌞 Sábados: 9:00 AM - 3:00 PM</div>
+                        <div class="schedule-time">🍽️ Almuerzo: 1:00 PM - 2:00 PM</div>
+                        <div class="schedule-total">Total diario: 8.6 horas (incluyendo almuerzo)</div>
+                    </div>
+                    
+                    <div class="schedule-option">
+                        <div class="schedule-title">Opción 3</div>
+                        <div class="schedule-time">🌤️ Lunes a Viernes: 10:00 AM - 6:36 PM</div>
+                        <div class="schedule-time">🌤️ Sábados: 10:00 AM - 4:00 PM</div>
+                        <div class="schedule-time">🍽️ Almuerzo: 2:00 PM - 3:00 PM</div>
+                        <div class="schedule-total">Total diario: 8.6 horas (incluyendo almuerzo)</div>
+                    </div>
+                    
+                    <div class="schedule-option">
+                        <div class="schedule-title">Opción 4</div>
+                        <div class="schedule-time">☀️ Lunes a Viernes: 10:30 AM - 7:06 PM</div>
+                        <div class="schedule-time">☀️ Sábados: 10:30 AM - 4:30 PM</div>
+                        <div class="schedule-time">🍽️ Almuerzo: 2:30 PM - 3:30 PM</div>
+                        <div class="schedule-total">Total diario: 8.6 horas (incluyendo almuerzo)</div>
+                    </div>
+
+                    <div class="schedule-option">
+                        <div class="schedule-title">Opción 5</div>
+                        <div class="schedule-time">🌞 Lunes a Viernes: 9:00 AM - 5:36 PM</div>
+                        <div class="schedule-time">🌞 Sábados: 9:00 AM - 3:00 PM</div>
+                        <div class="schedule-time">🍽️ Almuerzo: 12:30 PM - 1:30 PM</div>
+                        <div class="schedule-total">Total diario: 8.6 horas (incluyendo almuerzo)</div>
+                    </div>
+                </div>
+                
+                <div class="important-note">
+                    <strong>Importante:</strong> Estos horarios permitirán la cobertura y supervisión adecuada de los trabajadores con jornada de 36 horas semanales, garantizando la continuidad operacional.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🏢 Personal Afectado por Sede - Detalle Completo</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">197</div>
+                        <div class="stat-label">BOGOTÁ<br>61 → 44h | 136 mantienen 36h</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">170</div>
+                        <div class="stat-label">MEDELLÍN<br>58 → 44h | 112 mantienen 36h</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">76</div>
+                        <div class="stat-label">URABÁ<br>16 → 44h | 60 mantienen 36h</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">42</div>
+                        <div class="stat-label">BARRANQUILLA<br>13 → 44h | 29 mantienen 36h</div>
+                    </div>
+                </div>
+
+                <div class="area-detail">
+                    <div class="area-title">🏛️ BOGOTÁ - 197 empleados</div>
+                    
+                    <h3 style="color: #e74c3c; border-left-color: #e74c3c;">🔄 Empleados que PASAN a 44 horas semanales (61 personas)</h3>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">ADMINISTRATIVO</div>
+                            <div class="cargo-hours">13 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">BACK OFFICE</div>
+                            <div class="cargo-hours">10 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">FORMACIÓN Y CALIDAD</div>
+                            <div class="cargo-hours">9 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF TYT</div>
+                            <div class="cargo-hours">7 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF TMK</div>
+                            <div class="cargo-hours">5 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF P&F</div>
+                            <div class="cargo-hours">5 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">APRENDICES</div>
+                            <div class="cargo-hours">4 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">WORKFORCE</div>
+                            <div class="cargo-hours">2 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF IT</div>
+                            <div class="cargo-hours">2 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">OTROS STAFF</div>
+                            <div class="cargo-hours">E-COMMERCE (1), GERENCIA (1), W&D (1), USUARIOS Y SSFF (1)</div>
+                        </div>
+                    </div>
+
+                    <h3 style="color: #27ae60; border-left-color: #27ae60;">✅ Empleados que MANTIENEN 36 horas semanales (136 personas)</h3>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">TYT</div>
+                            <div class="cargo-hours">70 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">MÓVIL</div>
+                            <div class="cargo-hours">42 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">HOGAR</div>
+                            <div class="cargo-hours">22 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">ADMINISTRATIVO</div>
+                            <div class="cargo-hours">2 empleados</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="area-detail">
+                    <div class="area-title">🌄 MEDELLÍN - 170 empleados</div>
+                    
+                    <h3 style="color: #e74c3c; border-left-color: #e74c3c;">🔄 Empleados que PASAN a 44 horas semanales (58 personas)</h3>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">ADMINISTRATIVO</div>
+                            <div class="cargo-hours">9 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">APRENDICES</div>
+                            <div class="cargo-hours">9 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF TMK</div>
+                            <div class="cargo-hours">7 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">WORKFORCE</div>
+                            <div class="cargo-hours">6 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">FORMACIÓN Y CALIDAD</div>
+                            <div class="cargo-hours">6 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF P&F</div>
+                            <div class="cargo-hours">6 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF W&D</div>
+                            <div class="cargo-hours">6 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF IT</div>
+                            <div class="cargo-hours">3 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">GERENCIA</div>
+                            <div class="cargo-hours">2 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">BACK OFFICE</div>
+                            <div class="cargo-hours">2 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">OTROS</div>
+                            <div class="cargo-hours">HOGAR (1), MÓVIL (1)</div>
+                        </div>
+                    </div>
+
+                    <h3 style="color: #27ae60; border-left-color: #27ae60;">✅ Empleados que MANTIENEN 36 horas semanales (112 personas)</h3>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">MÓVIL</div>
+                            <div class="cargo-hours">68 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">HOGAR</div>
+                            <div class="cargo-hours">37 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">EMI FALCK</div>
+                            <div class="cargo-hours">3 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF TMK</div>
+                            <div class="cargo-hours">2 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">FORMACIÓN Y CALIDAD</div>
+                            <div class="cargo-hours">1 empleado</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">TYT</div>
+                            <div class="cargo-hours">1 empleado</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="area-detail">
+                    <div class="area-title">🌊 URABÁ - 76 empleados</div>
+                    
+                    <h3 style="color: #e74c3c; border-left-color: #e74c3c;">🔄 Empleados que PASAN a 44 horas semanales (16 personas)</h3>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">FORMACIÓN Y CALIDAD</div>
+                            <div class="cargo-hours">4 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF TMK</div>
+                            <div class="cargo-hours">3 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">ADMINISTRATIVO</div>
+                            <div class="cargo-hours">3 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">APRENDICES</div>
+                            <div class="cargo-hours">2 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF IT</div>
+                            <div class="cargo-hours">2 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF P&F</div>
+                            <div class="cargo-hours">1 empleado</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">MÓVIL</div>
+                            <div class="cargo-hours">1 empleado</div>
+                        </div>
+                    </div>
+
+                    <h3 style="color: #27ae60; border-left-color: #27ae60;">✅ Empleados que MANTIENEN 36 horas semanales (60 personas)</h3>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">MÓVIL</div>
+                            <div class="cargo-hours">30 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">HOGAR</div>
+                            <div class="cargo-hours">29 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">TYT</div>
+                            <div class="cargo-hours">1 empleado</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="area-detail">
+                    <div class="area-title">🏖️ BARRANQUILLA - 42 empleados</div>
+                    
+                    <h3 style="color: #e74c3c; border-left-color: #e74c3c;">🔄 Empleados que PASAN a 44 horas semanales (13 personas)</h3>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">FORMACIÓN Y CALIDAD</div>
+                            <div class="cargo-hours">4 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF CHILE</div>
+                            <div class="cargo-hours">4 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">ADMINISTRATIVO</div>
+                            <div class="cargo-hours">2 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">APRENDICES</div>
+                            <div class="cargo-hours">2 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">STAFF TYT</div>
+                            <div class="cargo-hours">1 empleado</div>
+                        </div>
+                    </div>
+
+                    <h3 style="color: #27ae60; border-left-color: #27ae60;">✅ Empleados que MANTIENEN 36 horas semanales (29 personas)</h3>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">MÓVIL</div>
+                            <div class="cargo-hours">23 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">TYT</div>
+                            <div class="cargo-hours">3 empleados</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">HOGAR</div>
+                            <div class="cargo-hours">3 empleados</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>👥 Personal que se mantiene en 36 horas semanales</h2>
+                <h3>337 empleados mantienen su jornada actual</h3>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">163</div>
+                        <div class="stat-label">MÓVIL<br>(Sales Advisors)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">92</div>
+                        <div class="stat-label">HOGAR<br>(Sales Advisors)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">75</div>
+                        <div class="stat-label">TYT<br>(Sales Advisors)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">7</div>
+                        <div class="stat-label">OTROS<br>(Staff TMK, Administrativo, etc.)</div>
+                    </div>
+                </div>
+
+                <div class="two-column">
+                    <div class="area-detail">
+                        <div class="area-title">📞 TYT (75 empleados)</div>
+                        <div class="cargo-list">
+                            <div class="cargo-item">
+                                <div class="cargo-name">Sales Advisor</div>
+                                <div class="cargo-hours">75 personas - 6 horas diarias</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="area-detail">
+                        <div class="area-title">📱 MÓVIL (163 empleados)</div>
+                        <div class="cargo-list">
+                            <div class="cargo-item">
+                                <div class="cargo-name">Sales Advisor</div>
+                                <div class="cargo-hours">163 personas - 6 horas diarias</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="area-detail">
+                        <div class="area-title">🏠 HOGAR (92 empleados)</div>
+                        <div class="cargo-list">
+                            <div class="cargo-item">
+                                <div class="cargo-name">Sales Advisor</div>
+                                <div class="cargo-hours">92 personas - 6 horas diarias</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="area-detail">
+                        <div class="area-title">🚑 EMI FALCK (3 empleados)</div>
+                        <div class="cargo-list">
+                            <div class="cargo-item">
+                                <div class="cargo-name">Sales Advisor</div>
+                                <div class="cargo-hours">3 personas - 6 horas diarias</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🎯 Estrategia de Cobertura y Supervisión</h2>
+                
+                <div class="important-note">
+                    <strong>Objetivo Principal:</strong> Los 5 horarios propuestos garantizan la cobertura completa y supervisión adecuada de los 337 empleados que mantienen jornada de 36 horas semanales.
+                </div>
+
+                <h3>📋 Distribución Estratégica por Horarios</h3>
+                
+                <div class="area-detail">
+                    <div class="area-title">🌅 Opción 1 (7:00 AM - 3:36 PM)</div>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">Personal recomendado:</div>
+                            <div class="cargo-hours">Gerencia, Operations Managers, Staff IT, Workforce</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">Cobertura:</div>
+                            <div class="cargo-hours">Supervisión matutina y primera mitad del día</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="area-detail">
+                    <div class="area-title">🌞 Opción 2 (9:00 AM - 5:36 PM)</div>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">Personal recomendado:</div>
+                            <div class="cargo-hours">Administrativo, Formación y Calidad, Staff W&D</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">Cobertura:</div>
+                            <div class="cargo-hours">Horario corporativo estándar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="area-detail">
+                    <div class="area-title">🌤️ Opción 3 (10:00 AM - 6:36 PM)</div>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">Personal recomendado:</div>
+                            <div class="cargo-hours">Staff TYT, Staff TMK, Back Office</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">Cobertura:</div>
+                            <div class="cargo-hours">Supervisión de operaciones comerciales</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="area-detail">
+                    <div class="area-title">☀️ Opción 4 (10:30 AM - 7:06 PM)</div>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">Personal recomendado:</div>
+                            <div class="cargo-hours">Staff P&F, Staff E-Commerce, Staff Chile</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">Cobertura:</div>
+                            <div class="cargo-hours">Supervisión vespertina y cierre de operaciones</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="area-detail">
+                    <div class="area-title">🌞 Opción 5 (9:00 AM - 5:36 PM)</div>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">Personal recomendado:</div>
+                            <div class="cargo-hours">Administrativo alternativo, Aprendices, Personal mixto</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">Cobertura:</div>
+                            <div class="cargo-hours">Horario corporativo flexible con almuerzo temprano</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>⚖️ Marco Legal Básico</h2>
+                
+                <div class="two-column">
+                    <div class="area-detail">
+                        <div class="area-title">📋 Ley 2101 de 2021</div>
+                        <div class="cargo-list">
+                            <div class="cargo-item">
+                                <div class="cargo-name">Objetivo:</div>
+                                <div class="cargo-hours">Reducir jornada laboral sin disminuir salarios</div>
+                            </div>
+                            <div class="cargo-item">
+                                <div class="cargo-name">Cronograma:</div>
+                                <div class="cargo-hours">
+                                    2023: 47h → 2024: 46h → 2025: 44h → 2026: 42h
+                                </div>
+                            </div>
+                            <div class="cargo-item">
+                                <div class="cargo-name">Garantía:</div>
+                                <div class="cargo-hours">Mantenimiento de salarios y prestaciones</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="area-detail">
+                        <div class="area-title">⚠️ Sanciones</div>
+                        <div class="cargo-list">
+                            <div class="cargo-item">
+                                <div class="cargo-name">Multas:</div>
+                                <div class="cargo-hours">De 1 a 5.000 salarios mínimos</div>
+                            </div>
+                            <div class="cargo-item">
+                                <div class="cargo-name">Autoridad:</div>
+                                <div class="cargo-hours">Ministerio de Trabajo</div>
+                            </div>
+                            <div class="cargo-item">
+                                <div class="cargo-name">Fecha límite:</div>
+                                <div class="cargo-hours">15 de julio de 2026</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="important-note">
+                    <strong>💰 Importante:</strong> El salario se mantiene igual, trabajando menos horas. El área de nómina se encargará de ajustar el valor por hora automáticamente.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📅 Plan de Implementación</h2>
+                
+                <div class="area-detail">
+                    <div class="area-title">🗓️ Cronograma</div>
+                    <div class="cargo-list">
+                        <div class="cargo-item">
+                            <div class="cargo-name">1 - 7 de julio:</div>
+                            <div class="cargo-hours">Socialización con empleados y asignación de horarios</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">8 - 14 de julio:</div>
+                            <div class="cargo-hours">Configuración de sistemas y capacitación</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">15 de julio:</div>
+                            <div class="cargo-hours">Inicio oficial de la nueva jornada</div>
+                        </div>
+                        <div class="cargo-item">
+                            <div class="cargo-name">15 - 31 de julio:</div>
+                            <div class="cargo-hours">Seguimiento y ajustes necesarios</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📝 Consideraciones Importantes</h2>
+                
+                <div class="two-column">
+                    <div>
+                        <h3>✅ Beneficios de la Implementación</h3>
+                        <ul style="margin-left: 20px; color: #27ae60;">
+                            <li>Cumplimiento con la normativa legal vigente</li>
+                            <li>Mejora en el balance vida-trabajo</li>
+                            <li>Mantenimiento de la productividad</li>
+                            <li>Cobertura completa de operaciones</li>
+                            <li>Flexibilidad en horarios de supervisión</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3>⚠️ Puntos de Atención</h3>
+                        <ul style="margin-left: 20px; color: #e74c3c;">
+                            <li>Asignación de horarios con RRHH</li>
+                            <li>Capacitación al personal sobre nuevos horarios</li>
+                            <li>Ajustar sistemas de control de tiempo (si aplica)</li>
+                            <li>Monitorear impacto en indicadores KPIs (si aplica)</li>
+                            <li>Evitar horas extras - inician desde las 7:00 PM según nueva Ley 2466 de 2025</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" style="text-align: center;">
+                <h2>📞 Contacto y Soporte</h2>
+                <p style="font-size: 1.1rem; margin: 20px 0;">
+                    Para consultas sobre la implementación de la nueva jornada laboral, contactar al área legal.
+                </p>
+                <div class="highlight-box">
+                    ⚖️ ONE CONTACT INTERNACIONAL S.A.S. - Área Legal<br>
+                    📧 Email: linda.urbano@onecontact.com.co
+                </div>
+            </div>
+
+            <button class="btn-print" onclick="window.print()">🖨️ Imprimir Presentación</button>
+
+            <div style="text-align: center; margin-top: 40px; color: #7f8c8d;">
+                <p>© 2025 - ONE CONTACT INTERNACIONAL S.A.S. | Implementación Reforma Laboral | Reducción de Jornada a 44 Horas Semanales</p>
+            </div>
+        </div>
+    </body>
+    </html>
